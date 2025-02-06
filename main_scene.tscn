@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwt6su2g80arf"]
+
+[ext_resource type="Script" path="res://main_scene.gd" id="1_yw54g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2lwdt"]
+font_size = 100
+outline_size = 30
+outline_color = Color(0.443137, 0.556863, 0.262745, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_yw54g")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 399.0
+offset_top = 814.0
+offset_right = 683.0
+offset_bottom = 951.0
+text = "Game"
+label_settings = SubResource("LabelSettings_2lwdt")
