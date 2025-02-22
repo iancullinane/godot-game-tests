@@ -1,0 +1,142 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx1txo3cxj3yi"]
+
+[ext_resource type="Script" path="res://scenes/data_ctl.gd" id="1_50oms"]
+[ext_resource type="LabelSettings" uid="uid://cjvh55rjb6tih" path="res://scenes/ui/new_label_settings.tres" id="2_bts2s"]
+
+[node name="MainControls" type="Control"]
+layout_mode = 3
+anchor_left = 0.06
+anchor_right = 0.964
+anchor_bottom = 0.165
+offset_left = 0.199997
+offset_top = 21.0
+offset_right = -0.119995
+offset_bottom = 6.19998
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_50oms")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameEntry" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/NameEntry"]
+layout_mode = 2
+text = "Name"
+label_settings = ExtResource("2_bts2s")
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/NameEntry"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatEntry" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/StatEntry"]
+layout_mode = 2
+text = "Other Data"
+label_settings = ExtResource("2_bts2s")
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/StatEntry"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Panel1" type="Panel" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Insert" type="MenuButton" parent="VBoxContainer/Buttons/Panel1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Insert"
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Select" type="MenuButton" parent="VBoxContainer/Buttons/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select"
+
+[node name="Panel3" type="Panel" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Update" type="MenuButton" parent="VBoxContainer/Buttons/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Update"
+
+[node name="Panel4" type="Panel" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Delete" type="MenuButton" parent="VBoxContainer/Buttons/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Delete"
+
+[node name="Panel5" type="Panel" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Custom" type="MenuButton" parent="VBoxContainer/Buttons/Panel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Custom Select"
+
+[node name="Create Table" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -5.99999
+offset_top = -95.0
+offset_right = 181.0
+offset_bottom = -41.0
+metadata/_edit_group_ = true
+
+[node name="CreateTable" type="Button" parent="Create Table"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create Table
+"
+
+[connection signal="button_down" from="VBoxContainer/Buttons/Panel1/Insert" to="." method="_on_insert_button_down"]
+[connection signal="button_down" from="VBoxContainer/Buttons/Panel2/Select" to="." method="_on_select_button_down"]
+[connection signal="button_down" from="VBoxContainer/Buttons/Panel3/Update" to="." method="_on_update_button_down"]
+[connection signal="button_down" from="VBoxContainer/Buttons/Panel4/Delete" to="." method="_on_delete_button_down"]
+[connection signal="button_down" from="VBoxContainer/Buttons/Panel5/Custom" to="." method="_on_custom_button_down"]
+[connection signal="button_down" from="Create Table/CreateTable" to="." method="_on_create_table_button_down"]
