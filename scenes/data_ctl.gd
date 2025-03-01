@@ -1,59 +1,37 @@
 # This shouldn't be a node, it should be an Object or RefCounted
 # as the additionaly load of the Node type os not needed
 extends Control
-class_name DataCtl
 
-var database : SQLite
 @onready var NameField = $VBoxContainer/NameEntry/TextEdit
 @onready var StatField = $VBoxContainer/StatEntry/TextEdit
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	database = SQLite.new()
-	database.path = "res://data.db"
-	database.open_db()
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-	
-
-
 
 func _on_insert_button_down() -> void:
 	var data = {
 		"name": NameField.text,
 		"stat": int(StatField.text)
 	}
-	var success = database.insert_row("players", data)
+	var success = GameData.add_row("players", data)
 	if success:
 		print("Inserted {name}: {stat}".format(data))
 	else:
 		print(Errors.DATA_INSERT_FAILED)
-	
-
 
 func _on_select_button_down() -> void:
-	var selection = database.select_rows("players", "stat >= 0", ["*"])
+	var selection = GameData.db.select_rows("players", "stat >= 0", ["*"])
 	if selection.size() == 0:
 		print(Errors.DATA_SELECT_FAILED)
 	else:
 		print(selection)
 		
-
-
 func _on_update_button_down() -> void:
-	var success = database.update_rows("players", "name = '" + NameField.text + "'", {"stat": int(StatField.text)})
+	var success = GameData.update_rows("players", "name = '" + NameField.text + "'", {"stat": int(StatField.text)})
 	if success:
 		print("updated")
 	else:
 		print(Errors.DATA_UPDATE_FAILED)
 
 func _on_delete_button_down() -> void:
-	database.delete_rows("players", "name = '" + NameField.text + "'")
+	GameData.delete_rows("players", "name = '" + NameField.text + "'")
 
 
 func _on_custom_button_down() -> void:
@@ -66,6 +44,4 @@ func _on_create_table_button_down() -> void:
 		"name": {"data_type": "text"},
 		"stat": {"data_type": "float"}
 	}
-	database.create_table("players", table)
-
-	
+	GameData.db.create_table("players", table)

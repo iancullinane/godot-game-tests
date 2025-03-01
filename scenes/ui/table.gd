@@ -1,28 +1,23 @@
 extends Control
 
-var players = [
-	{"name": "Alice", "score": 100},
-	{"name": "Bob", "score": 90},
-	{"name": "Charlie", "score": 85}
-]
-
-var database : SQLite
+var table_result = []
 
 func _ready():
+	GameData.data_updated.connect(_on_data_updated)	
+	table_result = GameData.select_players()
+	refresh_table_view()
 	
-	database = SQLite.new()
-	database.path = "res://data.db"
-	database.open_db()
-	
-	var selection = database.select_rows("players", "stat >= 0", ["*"])
-	if selection.size() == 0:
-		print(Errors.DATA_SELECT_FAILED)
-	else:
-		print(selection)
-	
-	var table_container = $Panel/VBoxContainer/VBoxContainer  # Path to the row container
-	
-	for player in selection:
+func _on_data_updated() -> void:
+	print("Data updated, refresh view")
+	table_result = GameData.select_players()
+	refresh_table_view()
+
+func refresh_table_view() -> void:
+	var table_container = $Panel/MarginContainer/VBoxContainer/VBoxContainer  
+	for child in table_container.get_children():
+		child.queue_free()
+		
+	for player in table_result:
 		var row = HBoxContainer.new()  # Create a row
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL  # Make it stretch
 		
@@ -37,4 +32,4 @@ func _ready():
 		row.add_child(name_label)
 		row.add_child(score_label)
 		
-		table_container.add_child(row)  # Add the row to the VBoxContainer
+		table_container.add_child(row)  

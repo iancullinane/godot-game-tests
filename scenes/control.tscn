@@ -1,19 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx1txo3cxj3yi"]
 
 [ext_resource type="Script" path="res://scenes/data_ctl.gd" id="1_50oms"]
-[ext_resource type="LabelSettings" uid="uid://cjvh55rjb6tih" path="res://scenes/ui/new_label_settings.tres" id="2_bts2s"]
+[ext_resource type="Theme" uid="uid://bk7x7vskffp0" path="res://scenes/main_theme.tres" id="3_8hom7"]
 
 [node name="MainControls" type="Control"]
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 3
-anchor_left = 0.06
-anchor_right = 0.964
-anchor_bottom = 0.165
-offset_left = 0.199997
-offset_top = 21.0
-offset_right = -0.119995
-offset_bottom = 6.19998
+anchor_top = 0.861
+anchor_right = 1.0
+anchor_bottom = 0.861
+offset_left = 47.0
+offset_top = -1616.12
+offset_right = -34.0
+offset_bottom = -1377.12
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_8hom7")
 script = ExtResource("1_50oms")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -30,8 +32,8 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/NameEntry"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Name"
-label_settings = ExtResource("2_bts2s")
 
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/NameEntry"]
 layout_mode = 2
@@ -43,8 +45,8 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/StatEntry"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Other Data"
-label_settings = ExtResource("2_bts2s")
 
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/StatEntry"]
 layout_mode = 2
@@ -66,6 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_8hom7")
 text = "Insert"
 
 [node name="Panel2" type="Panel" parent="VBoxContainer/Buttons"]
@@ -118,7 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Custom Select"
+text = "Custom "
 
 [node name="Create Table" type="HBoxContainer" parent="."]
 layout_mode = 0
