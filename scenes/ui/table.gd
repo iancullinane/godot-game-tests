@@ -2,6 +2,7 @@ extends Control
 
 var table_result = []
 
+
 func _ready():
 	GameData.data_updated.connect(_on_data_updated)	
 	table_result = GameData.select_players()
@@ -13,9 +14,10 @@ func _on_data_updated() -> void:
 	refresh_table_view()
 
 func refresh_table_view() -> void:
-	var table_container = $Panel/MarginContainer/VBoxContainer/VBoxContainer  
-	for child in table_container.get_children():
-		child.queue_free()
+	var table_container = $Panel/MarginContainer/ScrollContainer/VBoxContainer
+	var children = table_container.get_children()
+	for i in range(1, children.size()):  # Start from index 1 to skip the first child
+		children[i].queue_free()
 		
 	for player in table_result:
 		var row = HBoxContainer.new()  # Create a row

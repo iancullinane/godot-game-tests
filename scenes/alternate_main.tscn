@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c16u27d0op4n4"]
 
 [ext_resource type="Texture2D" uid="uid://dtkmy6xmxrjqi" path="res://assets/9-box-tile.png" id="1_foir6"]
-[ext_resource type="Script" path="res://scenes/alternate_main_color_panel.gd" id="2_54tif"]
-[ext_resource type="Script" path="res://scenes/ui/color_options.gd" id="2_cf5ri"]
+[ext_resource type="Script" uid="uid://dlxa1x4uygq4f" path="res://scenes/alternate_main_color_panel.gd" id="2_54tif"]
+[ext_resource type="Script" uid="uid://beojqb0c3v1dr" path="res://scenes/ui/color_options.gd" id="2_cf5ri"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbbpf"]
 
@@ -107,7 +107,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel1/MarginContainer"]
 layout_mode = 2
-color = Color(0.17556, 0.269396, 0.475079, 1)
+color = Color(0.872462, 0.457497, 0.8356, 1)
 
 [node name="Panel2" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -128,7 +128,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel2/MarginContainer"]
 layout_mode = 2
-color = Color(0.769914, 0.618229, 0.975255, 1)
+color = Color(0.669996, 0.414336, 0.594976, 1)
 
 [node name="Panel3" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -149,7 +149,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel3/MarginContainer"]
 layout_mode = 2
-color = Color(0.626057, 0.4012, 0.475242, 1)
+color = Color(0.150295, 0.771315, 0.354925, 1)
 
 [node name="Panel4" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -170,7 +170,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel4/MarginContainer"]
 layout_mode = 2
-color = Color(0.629335, 0.421833, 0.515125, 1)
+color = Color(0.232034, 0.0627797, 0.0852542, 1)
 
 [node name="Panel5" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -191,7 +191,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel5/MarginContainer"]
 layout_mode = 2
-color = Color(0.443265, 0.548153, 0.0968791, 1)
+color = Color(0.714248, 0.00531339, 0.753779, 1)
 
 [node name="Panel6" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -212,7 +212,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel6/MarginContainer"]
 layout_mode = 2
-color = Color(0.755005, 0.428273, 0.952784, 1)
+color = Color(0.389654, 0.253212, 0.190988, 1)
 
 [node name="Panel7" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -233,7 +233,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel7/MarginContainer"]
 layout_mode = 2
-color = Color(0.290476, 0.108646, 0.711741, 1)
+color = Color(0.176354, 0.496067, 0.991251, 1)
 
 [node name="Panel8" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -254,7 +254,7 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel8/MarginContainer"]
 layout_mode = 2
-color = Color(0.136063, 0.919532, 0.15136, 1)
+color = Color(0.978376, 0.129692, 0.754165, 1)
 
 [node name="Panel9" type="Panel" parent="Menu/ColorMenu"]
 layout_mode = 2
@@ -275,4 +275,4 @@ theme_override_constants/margin_bottom = 3
 
 [node name="ColorRect" type="ColorRect" parent="Menu/ColorMenu/Panel9/MarginContainer"]
 layout_mode = 2
-color = Color(0.964052, 0.9752, 0.762868, 1)
+color = Color(0.427862, 0.833518, 0.436453, 1)

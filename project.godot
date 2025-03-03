@@ -12,8 +12,10 @@ config_version=5
 
 config/name="Mobile Game Template"
 run/main_scene="res://main_scene.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon2.svg"
+config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/bg_color=Color(0.497474, 0.497474, 0.497474, 1)
+boot_splash/image="res://assets/jon_snow.png"
+config/icon="res://carboardbox-stack-80x80.svg"
 
 [autoload]
 
@@ -22,9 +24,9 @@ GameData="*res://globals/database.gd"
 
 [display]
 
-window/size/viewport_width=1290
-window/size/viewport_height=2796
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1200
+window/size/viewport_height=2200
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 

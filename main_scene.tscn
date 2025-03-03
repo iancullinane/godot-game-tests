@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwt6su2g80arf"]
+[gd_scene load_steps=8 format=3 uid="uid://cwt6su2g80arf"]
 
-[ext_resource type="Script" path="res://main_scene.gd" id="1_yw54g"]
-[ext_resource type="Texture2D" uid="uid://bxhstmdctb4iu" path="res://assets/jon_snow.png" id="2_8p55j"]
+[ext_resource type="Script" uid="uid://xp7msyi7v6h2" path="res://main_scene.gd" id="1_yw54g"]
+[ext_resource type="Texture2D" uid="uid://c3gowovnen6i0" path="res://assets/pixel-bg.png" id="2_b6nsa"]
 [ext_resource type="PackedScene" uid="uid://cx1txo3cxj3yi" path="res://scenes/control.tscn" id="2_nd0im"]
 [ext_resource type="PackedScene" uid="uid://c16u27d0op4n4" path="res://scenes/alternate_main.tscn" id="4_4vn1h"]
 [ext_resource type="PackedScene" uid="uid://uj5dstsb7niu" path="res://scenes/ui/table.tscn" id="5_bfqim"]
+[ext_resource type="PackedScene" uid="uid://du71fhytq8a53" path="res://scenes/map/Map.tscn" id="6_qdh5n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2lwdt"]
 font_size = 100
@@ -14,23 +15,15 @@ outline_color = Color(0.443137, 0.556863, 0.262745, 1)
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yw54g")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1850.0
-offset_bottom = 2897.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-color = Color(0.976471, 0.952941, 0.968627, 1)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1049, 1893)
-scale = Vector2(1.90881, 1.95513)
-texture = ExtResource("2_8p55j")
+self_modulate = Color(1, 1, 1, 0.796078)
+position = Vector2(656.229, 1437.46)
+scale = Vector2(2.36586, 2.44923)
+texture = ExtResource("2_b6nsa")
+metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 40.0
 offset_top = 29.0
 offset_right = 324.0
@@ -44,19 +37,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 63.0
-offset_top = 370.0
-offset_right = 1030.0
-offset_bottom = 564.0
+offset_left = 79.0
+offset_top = 379.0
+offset_right = 1126.0
+offset_bottom = 657.0
 
 [node name="AlternateMain" parent="." instance=ExtResource("4_4vn1h")]
+visible = false
 offset_left = 201.0
 offset_top = 972.0
 offset_right = 201.0
 offset_bottom = 972.0
 
 [node name="Control2" parent="." instance=ExtResource("5_bfqim")]
-offset_left = 672.0
-offset_top = 633.0
-offset_right = 1212.0
-offset_bottom = 1252.0
+offset_left = 70.0
+offset_top = 684.0
+offset_right = 1131.0
+offset_bottom = 955.0
+
+[node name="Map" parent="." instance=ExtResource("6_qdh5n")]
+position = Vector2(64, 1007)
+scale = Vector2(2.7, 2.7)

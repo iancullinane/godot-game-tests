@@ -10,48 +10,83 @@ func _ready():
 	_initialize_database()
 
 func _initialize_database():
-	# Copy database if it doesn't exist (first-time launch)
+	# Ensure the database is copied from res:// to user://
 	if not FileAccess.file_exists(DB_PATH):
 		print("Copying database from res:// to user://")
-		DirAccess.copy_absolute(DB_ORIGINAL, DB_PATH)
+
+		# Open the original database in res://
+		var res_db = FileAccess.open(DB_ORIGINAL, FileAccess.READ)
+		if res_db == null:
+			push_error("Failed to open database from res://")
+			return  # Prevent further execution
+
+		# Read the database into memory
+		var db_data = res_db.get_buffer(res_db.get_length())
+		res_db.close()
+
+		# Create the new database in user://
+		var user_db = FileAccess.open(DB_PATH, FileAccess.WRITE)
+		if user_db == null:
+			push_error("Failed to create database in user://")
+			return  # Prevent further execution
+
+		# Write the copied data to user://
+		user_db.store_buffer(db_data)
+		user_db.close()
+		print("Database copied successfully to user://")
+	else:
+		print("Database already exists in user://, no need to copy.")
+
+	# Confirm database file size
+	var check_db = FileAccess.open(DB_PATH, FileAccess.READ)
+	if check_db:
+		print("Database size in user:// ", check_db.get_length(), "bytes")
+		check_db.close()
+	else:
+		push_error("Database file does not exist in user:// after copy")
 
 	# Open the database
 	db = SQLite.new()
 	db.path = DB_PATH
 	var err = db.open_db()
+	# Instead of relying on err, run a simple test query
 	if err:
-		push_error("Failed to open SQLite database")
+		push_error("SQLite reported error on open, checking usability...")
+
+	var test_query_success = db.query("SELECT name FROM sqlite_master WHERE type='table' LIMIT 1;")
+	if test_query_success:
+		print("Database opened and is accessible.")
 	else:
-		print("Database initialized successfully")
+		push_error("Database opened, but test query failed!")
 
 # Wrappers to ensure signals are emitted
 func select_players() -> Array:
 	var select_sproc : String = "select * from players;"
-	var success = db.query(select_sproc)
+	var _success = db.query(select_sproc)
+	return db.query_result
+
+# Wrappers to ensure signals are emitted
+func send_query(q: String) -> Array:
+	var success = db.query(q)
 	if success:
-		print("Inserted data successfully")
-		#data_updated.emit()
+		data_updated.emit()
 	return db.query_result
 
 # Wrappers to ensure signals are emitted
 func add_row(table: String, data: Dictionary) -> bool:
-	print("insert row")
 	var success = db.insert_row(table, data)
 	if success:
-		print("Inserted data successfully")
 		data_updated.emit()
 	return success
 
 func update_rows(table: String, condition: String, data: Dictionary) -> bool:
 	var success = db.update_rows(table, condition, data)
 	if success:
-		print("Updated data successfully")
 		data_updated.emit()
 	return success
 
 func delete_rows(table: String, condition: String) -> bool:
 	var success = db.delete_rows(table, condition)
 	if success:
-		print("Deleted data successfully")
 		data_updated.emit()
 	return success
